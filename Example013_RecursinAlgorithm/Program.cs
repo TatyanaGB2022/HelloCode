@@ -259,4 +259,48 @@
 //   Console.WriteLine($"f({i}) = {Fibonacci(i)}");//Попробуем понять, с какого числа начинается проблема. 
 // }
 
-//
+// // ПОЛУЧИТЬ ДОСТУП К НУЖНОЙ ДЕРИКТОРИИ
+// string path = "D:/Учеба/Знакомство с языками программирования/Знакомство с языками программирования (лекции)/Examples/Example001_HelloConsole";
+// // указываем путь к той папке, свойства который мы хотим посмотреть
+// DirectoryInfo di = new DirectoryInfo(path);// передаем путь в качестве аргумента
+// System.Console.WriteLine(di.CreationTime); // проверяем и в результате получаем 21.01.2023 11:23:28 дату создания папки
+// FileInfo[] fi = di.GetFiles(); // обратившись к di посмотреть какие содержатся файлы
+// for(int i =0; i < fi.Length; i++) //используя цикл можем пробежаться по всем элементам, указывая конкретный элем массива и вызывать его свойтсва Name
+
+// {
+//   System.Console.WriteLine(fi[i].Name); // и получаем инфу о файлах и дате 21.01.2023 11:23:28 Example001_HelloConsole.csproj Program.cs
+// }
+
+// //РЕКУРСИЯ, КОТОРАЯ ХОДИТ ПО ПАПКАМ И СМОТРИТ, ЧТО ТАМ ВНУТРИ
+// void CatalogInfo(string path, string indent = "") //ьетод CatalogInfo, в качестве аргумента  string path путь к 
+// //текущей папке и string indent = "" делает отсупы между файлами
+// {
+//   DirectoryInfo catalog = new DirectoryInfo(path); // получаем инфу из той директории в которую мы зашли
+
+//   DirectoryInfo[] catalogs = catalog.GetDirectories(); //массив всех файлов, находящихся в этой папке
+//   for (int i = 0; i < catalogs.Length; i++)
+//   {
+//     System.Console.WriteLine($"{indent}{catalogs[i].Name}"); //выводим инфу в текущем каталоге
+//     CatalogInfo(catalogs[i].FullName, indent + " "); // проматривать все папки полученные в catalog на этапе из 279 строки 
+//   }
+
+//   FileInfo[] files = catalog.GetFiles();// после вывода папок мы получаем список всех файлов в текущем каталоге
+
+//   for (int i = 0; i < files.Length; i++) // далее показываем их
+//   {
+//     System.Console.WriteLine($"{indent}{files[i].Name}");
+//   }
+// }
+// string path = @"D:/Учеба/Знакомство с языками программирования/Знакомство с языками программирования (лекции)/Examples/Example001_HelloConsole";
+// CatalogInfo(path);
+
+// // ИГРА В ПИПРАМИДКИ
+// void Towers(string with = "1", string on = "3", string some = "2", int count = 3) //string with = "1" - откуда берем блин, 
+// // string on = "3" - на этот шпиль все переложить, string some = "2" - промежуточный шпиль, int count = 3 - указываем общее количество блинов
+// {
+//   if (count > 1) Towers(with, some, on, count - 1);
+//   Console.WriteLine($"{with} >> {on}");
+//   if (count > 1) Towers(some, on, with, count - 1);
+// }
+// Towers();
+
